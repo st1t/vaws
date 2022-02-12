@@ -29,9 +29,11 @@ Usage:
 Available Commands:
   completion  Generate the autocompletion script for the specified shell
   ec2         Show EC2 instances.
+  elb         Show ELB.
   help        Help about any command
   rds         Show RDS instances.
   sg          Show Security Group
+  vpc         Show VPC
 
 Flags:
   -p, --aws-profile string   -p my-aws
@@ -95,6 +97,31 @@ $ vaws sg -p my-aws
 | launch-wizard-2 | inbound | sg-08d35fef29987e75e |   22 | sg-0d642190887707fd0 | vpc-0f9999c7db8c44b21 |
 | launch-wizard-2 | inbound | sg-08d35fef29987e75e |   53 | pl-61a12345          | vpc-0f9999c7db8c44b21 |
 +-----------------+---------+----------------------+------+----------------------+-----------------------+
+```
+
+## VPC
+
+```shell
+$ vaws vpc
++--------------+--------------+-------------+
+|     NAME     |      ID      |    CIDR     |
++--------------+--------------+-------------+
+| hoge service | vpc-123ZZZZZ | 10.0.0.0/16 |
+| default vpc  | vpc-123XXXXX | 10.1.0.0/16 |
++--------------+--------------+-------------+
+```
+
+## ELB
+
+```shell
+$ vaws elb
++-----------+-------------+-----------------+--------------+---------------------------------------------------+---------------------+---------+--------------------------------------------+
+|    LB     |    TYPE     |     SCHEME      |     VPC      |                      SUBNET                       |   SECURITY GROUP    | IP TYPE |                  DNS NAME                  |
++-----------+-------------+-----------------+--------------+---------------------------------------------------+---------------------+---------+--------------------------------------------+
+| test-lb01 | application | internet-facing | vpc-xxxxxxxx | subnet-1234567e3xxxxxxxx,subnet-1234567e3zzzzzzzz | sg-084d3a6xxxxxxxxx | ipv4    | test-lb01.ap-northeast-1.elb.amazonaws.com |
+| test-lb02 | application | internet-facing | vpc-xxxxxxxx | subnet-1234567e3xxxxxxxx,subnet-1234567e3zzzzzzzz | sg-084d3a6xxxxxxxxx | ipv4    | test-lb02.ap-northeast-1.elb.amazonaws.com |
+| test-lb03 | application | internet-facing | vpc-xxxxxxxx | subnet-1234567e3xxxxxxxx,subnet-1234567e3zzzzzzzz | none                | ipv4    | test-lb03.ap-northeast-1.elb.amazonaws.com |
++-----------+-------------+-----------------+--------------+---------------------------------------------------+---------------------+---------+--------------------------------------------+
 ```
 
 ## License
