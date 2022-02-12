@@ -22,7 +22,6 @@ func Execute() {
 }
 
 func init() {
-	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 	rootCmd.PersistentFlags().StringP("aws-profile", "p", "", "-p my-aws")
 	rootCmd.PersistentFlags().IntP("sort-position", "s", 1, "-s 1")
 }
