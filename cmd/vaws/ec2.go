@@ -42,7 +42,7 @@ var ec2Cmd = &cobra.Command{
 			fmt.Println(err)
 			os.Exit(1)
 		}
-		err = printEc2Instances(outputs, tablewriter.NewWriter(os.Stdout), sortPosition)
+		err = showEc2Instances(outputs, tablewriter.NewWriter(os.Stdout), sortPosition)
 		if err != nil {
 			fmt.Println(err)
 			os.Exit(1)
@@ -74,7 +74,7 @@ func getEc2Instances(cfg aws.Config) ([]*ec2.DescribeInstancesOutput, error) {
 	return outputs, nil
 }
 
-func printEc2Instances(outputs []*ec2.DescribeInstancesOutput, table *tablewriter.Table, sortPosition int) error {
+func showEc2Instances(outputs []*ec2.DescribeInstancesOutput, table *tablewriter.Table, sortPosition int) error {
 	header := []string{"NAME", "ID", "TYPE", "PRIVATE_IP", "PUBLIC_IP", "STATE", "SECURITY_GROUP"}
 	if sortPosition > len(header) || 1 > sortPosition {
 		return fmt.Errorf("out of sort range number when using --sort option")

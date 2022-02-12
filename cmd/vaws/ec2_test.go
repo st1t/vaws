@@ -347,7 +347,7 @@ func Test_printEc2Instances(t *testing.T) {
 	for _, tt := range tests {
 		var buf bytes.Buffer
 		t.Run(tt.name, func(t *testing.T) {
-			printEc2Instances(tt.args.outputs, tablewriter.NewWriter(&buf), tt.args.sortPosition)
+			showEc2Instances(tt.args.outputs, tablewriter.NewWriter(&buf), tt.args.sortPosition)
 			if buf.String() != tt.want {
 				t.Errorf("failed to test: %s\n", tt.name)
 				t.Errorf("\nwant:\n%s\n", tt.want)
