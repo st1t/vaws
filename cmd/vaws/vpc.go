@@ -16,8 +16,8 @@ const vpcMaxResult = 50
 // vpcCmd represents the vpc command
 var vpcCmd = &cobra.Command{
 	Use:   "vpc",
-	Short: "Show Security Group",
-	Long:  `Show Security Group`,
+	Short: "Show VPC",
+	Long:  `Show VPC`,
 	Run: func(cmd *cobra.Command, args []string) {
 		profile, err := cmd.Flags().GetString("aws-profile")
 		if err != nil {
