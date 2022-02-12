@@ -6,7 +6,15 @@ https://github.com/st1t/vaws
 
 ## Install
 
+```shell
+$ git clone git@github.com:st1t/vaws.git
+$ cd vaws/
+$ make install
+```
+
 Download the appropriate one for your CPU architecture from the following site.  
+If you are using a Mac, you may get a developer validation error.  
+In that case, right-click in the Finder and select Open.  
 https://github.com/st1t/vaws/releases
 
 ## Usage
