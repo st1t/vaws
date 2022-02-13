@@ -33,6 +33,7 @@ Available Commands:
   help        Help about any command
   rds         Show RDS instances.
   sg          Show Security Group
+  subnet      Show subnet
   vpc         Show VPC
 
 Flags:
@@ -109,6 +110,18 @@ $ vaws vpc
 | hoge service | vpc-123ZZZZZ | 10.0.0.0/16 |
 | default vpc  | vpc-123XXXXX | 10.1.0.0/16 |
 +--------------+--------------+-------------+
+```
+
+## Subnet
+
+```shell
++----------------+-----------------+-------------+--------------+-----------------+-----------+---------------+--------------------+
+|      NAME      |    SUBNET ID    |    CIDR     |     VPC      |       AZ        |   AZ ID   | MAP PUBLIC IP | AVAILABLE IP COUNT |
++----------------+-----------------+-------------+--------------+-----------------+-----------+---------------+--------------------+
+| test-subnet-01 | subnet-yyyyyyyy | 10.1.0.0/24 | vpc-12345678 | ap-northeast-1a | apne1-az4 | false         |                250 |
+| test-subnet-02 | subnet-xxxxxxxx | 10.2.0.0/24 | vpc-12345678 | ap-northeast-1a | apne1-az4 | true          |                250 |
+| test-subnet-03 | subnet-zzzzzzzz | 10.3.0.0/24 | vpc-12345678 | ap-northeast-1a | apne1-az4 | false         |                250 |
++----------------+-----------------+-------------+--------------+-----------------+-----------+---------------+--------------------+
 ```
 
 ## ELB
