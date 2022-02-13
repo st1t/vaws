@@ -6,11 +6,21 @@ https://github.com/st1t/vaws
 
 ## Install
 
+### Homebrew(macOS/Linux)
+
+```shell
+brew install st1t/tap/vaws
+```
+
+### make
+
 ```shell
 $ git clone git@github.com:st1t/vaws.git
 $ cd vaws/
 $ make install
 ```
+
+### Download binary
 
 Download the appropriate one for your CPU architecture from the following site.  
 If you are using a Mac, you may get a developer validation error.  
