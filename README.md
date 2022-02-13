@@ -2,7 +2,7 @@
 
 The vaws command was created to simplify the display of AWS resources.  
 This repository is a Go version of the command that was created in the following repository.  
-https://github.com/st1t/vaws
+https://github.com/st1t/vaws-ruby
 
 ## Install
 
