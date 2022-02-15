@@ -127,6 +127,57 @@ func Test_showSecurityGroup(t *testing.T) {
 `,
 		},
 		{
+			name: "classic ec2",
+			args: args{
+				outputs: []*ec2.DescribeSecurityGroupsOutput{
+					{
+						SecurityGroups: []types.SecurityGroup{
+							{
+								GroupName: aws.String("default"),
+								GroupId:   aws.String("sg-0d642190887707fd0"),
+								VpcId:     nil,
+								IpPermissions: []types.IpPermission{
+									{
+										IpRanges: []types.IpRange{
+											{
+												CidrIp: aws.String("0.0.0.0/0"),
+											},
+										},
+										ToPort: nil,
+									},
+								},
+							},
+							{
+								GroupName: aws.String("launch-wizard-1"),
+								GroupId:   aws.String("sg-0d642190887707fd0"),
+								VpcId:     aws.String("vpc-0f9999c7db8c44b21"),
+								IpPermissions: []types.IpPermission{
+									{
+										IpRanges: []types.IpRange{
+											{
+												CidrIp: aws.String("0.0.0.0/0"),
+											},
+										},
+										ToPort: aws.Int32(22),
+									},
+								},
+							},
+						},
+						ResultMetadata: middleware.Metadata{},
+					},
+				},
+				table:        nil,
+				sortPosition: 1,
+			},
+			want: `+-----------------+---------+----------------------+------+-----------+-----------------------+
+|      NAME       |  TYPE   |          ID          | PORT |  SOURCE   |          VPC          |
++-----------------+---------+----------------------+------+-----------+-----------------------+
+| default         | inbound | sg-0d642190887707fd0 |   -1 | 0.0.0.0/0 | none                  |
+| launch-wizard-1 | inbound | sg-0d642190887707fd0 |   22 | 0.0.0.0/0 | vpc-0f9999c7db8c44b21 |
++-----------------+---------+----------------------+------+-----------+-----------------------+
+`,
+		},
+		{
 			name: "sort_port",
 			args: args{
 				outputs: []*ec2.DescribeSecurityGroupsOutput{
