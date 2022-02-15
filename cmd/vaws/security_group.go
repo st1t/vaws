@@ -79,8 +79,14 @@ func showSecurityGroup(outputs []*ec2.DescribeSecurityGroupsOutput, table *table
 	table.SetHeader(header)
 	var records [][]string
 	var allowPort int32
+	var vpcId string
 	for _, o := range outputs {
 		for _, sg := range o.SecurityGroups {
+			if sg.VpcId == nil {
+				vpcId = "none"
+			} else {
+				vpcId = *sg.VpcId
+			}
 			for _, in := range sg.IpPermissions {
 				allowType := "inbound"
 				if in.ToPort != nil {
@@ -96,7 +102,7 @@ func showSecurityGroup(outputs []*ec2.DescribeSecurityGroupsOutput, table *table
 							*sg.GroupId,
 							strconv.Itoa(int(allowPort)),
 							*v.CidrIp,
-							*sg.VpcId,
+							vpcId,
 						})
 					}
 				}
@@ -108,7 +114,7 @@ func showSecurityGroup(outputs []*ec2.DescribeSecurityGroupsOutput, table *table
 							*sg.GroupId,
 							strconv.Itoa(int(allowPort)),
 							*prefix.PrefixListId,
-							*sg.VpcId,
+							vpcId,
 						})
 					}
 				}
@@ -120,7 +126,7 @@ func showSecurityGroup(outputs []*ec2.DescribeSecurityGroupsOutput, table *table
 							*sg.GroupId,
 							strconv.Itoa(int(allowPort)),
 							*v.GroupId,
-							*sg.VpcId,
+							vpcId,
 						})
 					}
 				}
