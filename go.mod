@@ -8,7 +8,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/ec2 v1.29.0
 	github.com/aws/aws-sdk-go-v2/service/elasticloadbalancingv2 v1.16.0
 	github.com/aws/aws-sdk-go-v2/service/rds v1.16.0
-	github.com/aws/smithy-go v1.10.0
+	github.com/aws/smithy-go v1.12.0
 	github.com/olekukonko/tablewriter v0.0.5
 	github.com/spf13/cobra v1.3.0
 )
